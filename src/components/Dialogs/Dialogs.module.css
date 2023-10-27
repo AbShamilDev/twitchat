@@ -1,0 +1,49 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    height: 80vh;
+    padding: 20px;
+}
+
+.users {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    height: 20px;
+    width: 100%;
+    color: rgb(181, 181, 181);
+    text-decoration: none;
+}
+
+.message {
+    display: flex;
+    width: fit-content; 
+    border: 1px solid purple;
+    max-width: 50%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.messageWrapper.self{
+    display: flex;
+    justify-content: end;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.dialogs .active {
+    color: #76b6ff;
+}
