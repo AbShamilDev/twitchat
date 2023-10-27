@@ -71,6 +71,7 @@
 
 .navFriendsItem:hover {
     box-shadow: 0px 0px 1px 0px #3dafec, 0px -68px 20px -40px #3dafec inset;
+    scale: 1.2;
 }
 
 .navFriendsItem div {
