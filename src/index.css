@@ -2,3 +2,8 @@ html {
     background-color: #0f151c;
     color: white;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}
