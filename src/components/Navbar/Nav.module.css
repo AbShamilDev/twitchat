@@ -4,9 +4,9 @@
     gap: 10px;
     height: min-content;
     grid-area: n;
-    background-color:#0f151c;
+    background: linear-gradient(#0f151c, #131e27);
     box-shadow: 0px 4px 4px 0px #3dafec;
-    border-radius: 13px;
+    border-radius: 10px;
     padding: 15px;
 }
 .nav {
@@ -70,8 +70,7 @@
 }
 
 .navFriendsItem:hover {
-    background: linear-gradient(#110f1c 55%,  #3dafec);
-    box-shadow: 0px 0px 1px 0px #3dafec;
+    box-shadow: 0px 0px 1px 0px #3dafec, 0px -68px 20px -40px #3dafec inset;
 }
 
 .navFriendsItem div {

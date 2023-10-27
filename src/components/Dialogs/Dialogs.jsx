@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem"
 import Message from "./Message/Message"
+import MessagesHeader from "./MessagesHeader/MessagesHeader"
 
 const Dialogs = (props) => {
     const [activeDialog, setDialog] = useState(0)
@@ -10,11 +11,12 @@ const Dialogs = (props) => {
     console.log(activeDialog)
     console.log(messagesElements)
     return (
-        <div className={s.dialogs}>
+        <div className={`${s.dialogs} ${activeDialog == 0 ? s.solo : ''}`}>
             <div className={s.users}>
                 {dialogsElements}
             </div>
             <div className={s.messages}>
+                <MessagesHeader />
                 {messagesElements}
             </div>
         </div>
