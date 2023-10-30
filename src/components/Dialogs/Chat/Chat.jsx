@@ -6,6 +6,10 @@ const Chat = (props) => {
         <div className={s.messages}>
             {props.messagesElements}
         </div>
+        <div className={s.messageform} action="">
+            <input placeholder="Начните писать..." onKeyUp={(el) => {if (el.key == 'Enter') el.target.value = ''}} type="text" name="" id="" />
+            <button type="submit">Отправить</button>
+        </div>
     </div>
 }
 
