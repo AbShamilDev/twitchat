@@ -8,28 +8,21 @@ import { useNavigate } from "react-router-dom"
 
 const Dialogs = (props) => {
     const [activeDialog, setDialog] = useState(0)
-    const dialogsElements = props.state.dialogs.map(d =>  <DialogItem id={d.id} activeDialog={activeDialog} name = {d.name} setDialog={el => setDialog(el)}/>)
-    const messagesElements = props.state.messages.filter(el => el.dialogId == activeDialog).map((m, i) => <Message index={i} type={m.type} message={m.message} />)
+    const dialogsElements = props.state.dialogs.map(d => <DialogItem id={d.id} activeDialog={activeDialog} name = {d.name} setDialog={el => setDialog(el)}/>)
     const navigate = useNavigate();
-    
-
 
     const cancelChat = () => {
         navigate('./')
         setDialog(0)
     }
-
-    const scrollChat = () => {
-        document.getElementById(`message-${(messagesElements.length - 1)}`).scrollIntoView()
-    }
+    
     useEffect(()=> {navigate('./')},[])
-    useEffect(() => {if (messagesElements.length !== 0) scrollChat();})
     return (
         <div className={`${s.dialogs} ${activeDialog == 0 ? s.solo : ''}`}>
             <div className={s.users}>
                 {dialogsElements}
             </div>
-            <Chat cancelChat={() => {cancelChat()}} activeDialog={activeDialog} messagesElements={messagesElements} dialogs={props.state.dialogs}/>
+            <Chat cancelChat={() => {cancelChat()}} activeDialog={activeDialog} messages={props.state.messages} dialogs={props.state.dialogs}/>
         </div>
     )
 }
