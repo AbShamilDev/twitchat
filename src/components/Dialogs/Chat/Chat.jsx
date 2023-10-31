@@ -14,10 +14,10 @@ const Chat = (props) => {
         <MessagesHeader cancelChat={() => { props.cancelChat() }} name={props.activeDialog !== 0 ? props.dialogs[props.activeDialog - 1].name : ''} />
         <div className={s.messagesWrapper}>
             <div className={s.messages}>
-                {messagesElements}
+                {props.messagesElements}
             </div>
         </div>
-        <MessageInput />
+        <MessageInput sendMessage={(message) => {sendMessage(message)}}/>
     </div>
 }
 
