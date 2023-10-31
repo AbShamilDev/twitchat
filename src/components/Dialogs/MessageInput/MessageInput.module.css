@@ -1,0 +1,32 @@
+.inputWrapper {
+    display: flex;
+    width: calc(100% - 20px);
+    align-items: center;
+    padding: 10px;
+    background: #1d2d3b;
+}
+
+.inputWrapper>input {
+    width: calc(100% - 45px);
+    height: 30px;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: white;
+    caret-color: #9caebe;
+    background: #131e27;
+}
+
+.sendButton {
+    width: 35px;
+    height: 35px;
+}
+
+.sendButton>svg {
+    fill: white
+}

@@ -16,18 +16,19 @@ const Dialogs = (props) => {
         navigate('./')
         setDialog(0)
     }
-
+    useEffect(()=> {console.log(messagesElements);console.log(document.getElementById(`message-${(messagesElements.length - 1)}`))},[])
+    
     const scrollChat = () => {
         document.getElementById(`message-${(messagesElements.length - 1)}`).scrollIntoView()
     }
     useEffect(()=> {navigate('./')},[])
-    useEffect(() => {if (messagesElements.length !== 0) scrollChat();})
+    // useEffect(() => {if (messagesElements.length !== 0) scrollChat();})
     return (
         <div className={`${s.dialogs} ${activeDialog == 0 ? s.solo : ''}`}>
             <div className={s.users}>
                 {dialogsElements}
             </div>
-            <Chat cancelChat={() => {cancelChat()}} activeDialog={activeDialog} messagesElements={messagesElements} dialogs={props.state.dialogs}/>
+            <Chat scrollChat={() => scrollChat()} cancelChat={() => {cancelChat()}} activeDialog={activeDialog} messagesElements={messagesElements} dialogs={props.state.dialogs}/>
         </div>
     )
 }
