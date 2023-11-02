@@ -7,7 +7,7 @@ const MessageInput = (props) => {
 
     return <div className={s.inputWrapper} action="">
     <input onInput={el => setMessage(el.target.value)} value={message} placeholder="Начните писать..." onKeyUp={(el) => {if (el.key == 'Enter') { props.sendMessage(message); setMessage('') }}} type="text" name="" id="" />
-    <span onClick={() => { props.sendMessage(message); props.scrollChat(); setMessage('') }} className={s.sendButton}><SendIcon /></span>
+    <span onClick={() => { props.sendMessage(message); setMessage('') }} className={s.sendButton}><SendIcon /></span>
 </div>
 }
 

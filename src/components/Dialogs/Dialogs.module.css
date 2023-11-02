@@ -79,10 +79,12 @@
 .message {
     display: flex;
     width: fit-content;
-    border: 1px solid purple;
+    position: relative;
+    background: #1d2d3b;
+    border-radius: 8px;
     max-width: 50%;
-    padding: 10px;
-    margin: 10px;
+    padding: 10px 40px 10px 10px;
+    margin: 5px 10px;
 }
 
 .dialogs .active {
@@ -127,4 +129,63 @@
 
 .status {
     color: #90b4dc;
+}
+
+.dateSpanNatural, .dateSpan{
+    display: block;
+    width: 100%;
+    top: 3px;
+}
+
+.messages>div {
+    position: relative;
+}
+
+.dateSpanNatural {
+    position: sticky;
+    margin: 5px 0;
+    z-index: 1;
+}
+
+.dateSpan {
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+    top: 2px;
+    position: absolute;
+}
+
+.dateSpanNatural>div{
+    width: max-content;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5px 10px;
+    background: #0f181e;
+    border-radius: 10px;
+    
+}
+
+/* .aa .dateSpanNatural {
+    animation: dateSpanDissapear;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+} */
+
+.time {
+    bottom: 5px;
+    right: 5px;
+    color: #919ca4;
+    font-size: 13px;
+    position: absolute;
+}
+
+@keyframes dateSpanDissapear {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
