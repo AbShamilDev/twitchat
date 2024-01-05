@@ -34,7 +34,6 @@
     color: #90b4dc;
 }
 
-
 .messageWrapper.self {
     display: flex;
     justify-content: end;
@@ -43,7 +42,7 @@
 .chat {
     display: flex;
     flex-direction: column;
-    border: 1px solid purple;
+    border: 1px solid #0f151c;
     background: #131e27;
     border-radius: 10px;
     width: 100%;
@@ -100,6 +99,8 @@
     width: 100%;
     height: 50px;
     background: #1d2d3b;
+    z-index: 1;
+    box-shadow: 0 0 4px 1px #0f151c;
 }
 
 .cancel {
@@ -131,46 +132,34 @@
     color: #90b4dc;
 }
 
-.dateSpanNatural, .dateSpan{
-    display: block;
-    width: 100%;
-    top: 3px;
-}
-
 .messages>div {
     position: relative;
 }
 
-.dateSpanNatural {
-    position: sticky;
-    margin: 5px 0;
-    z-index: 1;
-}
-
 .dateSpan {
-    /* display: flex; */
-    display: none;
+    display: flex;
     justify-content: center;
-    top: 2px;
-    position: absolute;
+    position: sticky;
+    top: 5px;
+    margin: 5px 0;
+    z-index: 2;
 }
 
-.dateSpanNatural>div{
+.dateSpan>div{
     width: max-content;
     margin: 0 auto;
-    text-align: center;
     padding: 5px 10px;
-    background: #0f181e;
+    background: #0a101469;
     border-radius: 10px;
-    
 }
 
-/* .aa .dateSpanNatural {
-    animation: dateSpanDissapear;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-} */
+.Show {
+    animation: dateSpanShow 500ms ease forwards;
+}
+
+.Hide {
+    animation: dateSpanHide 700ms ease forwards;
+}
 
 .time {
     bottom: 5px;
@@ -180,12 +169,21 @@
     position: absolute;
 }
 
-@keyframes dateSpanDissapear {
+@keyframes dateSpanHide {
     from {
         opacity: 100%;
     }
 
     to {
         opacity: 0;
+    }
+}
+@keyframes dateSpanShow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100%;
     }
 }
