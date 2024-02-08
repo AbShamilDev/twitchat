@@ -1,32 +1,45 @@
 .inputWrapper {
-    display: flex;
-    width: calc(100% - 20px);
-    align-items: center;
-    padding: 10px;
-    background: #1d2d3b;
+  display: flex;
+  width: calc(100% - 20px);
+  align-items: center;
+  padding: 10px;
+  background: #1d2d3b;
+}
+.inputWrapper.light {
+  background: #7d9cab;
+  color: #213845;
 }
 
-.inputWrapper>input {
-    width: calc(100% - 45px);
-    height: 30px;
-    margin-right: 10px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    color: white;
-    caret-color: #9caebe;
-    background: #131e27;
+.inputWrapper > input {
+  width: calc(100% - 45px);
+  height: 30px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: white;
+  caret-color: #9caebe;
+  background: #131e27;
+}
+
+.light > input {
+  background: #40535d;
+  color: white;
+  caret-color: white;
+}
+.light input::-webkit-input-placeholder {
+  color: white;
 }
 
 .sendButton {
-    width: 35px;
-    height: 35px;
+  width: 35px;
+  height: 35px;
 }
 
-.sendButton>svg {
-    fill: white
+.sendButton > svg {
+  fill: white;
 }

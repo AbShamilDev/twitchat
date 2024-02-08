@@ -1,189 +1,243 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-    height: 80vh;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  height: 80vh;
+  padding: 20px;
 }
 
 .dialogs.solo {
-    grid-template-columns: 12fr 0fr;
+  grid-template-columns: none;
 }
 
 .dialogs.solo .chat {
-    display: none;
+  display: none;
 }
 
 .users {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .user {
-    display: flex;
-    font-family: 'Montserrat', sans-serif;
-    padding: 10px;
-    font-weight: 500;
-    height: 20px;
-    width: 100%;
-    color: rgb(181, 181, 181);
-    text-decoration: none;
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+  font-weight: 500;
+  height: 20px;
+  width: 100%;
+  color: rgb(181, 181, 181);
+  text-decoration: none;
+}
+
+.dialogs.light .user {
+  color: rgb(66, 66, 66);
 }
 
 .user:hover {
-    color: #90b4dc;
+  color: #90b4dc !important;
 }
 
 .messageWrapper.self {
-    display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 }
 
 .chat {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #0f151c;
-    background: #131e27;
-    border-radius: 10px;
-    width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #0f151c;
+  background: #131e27;
+  border-radius: 10px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+.light .chat {
+  background: #bbd8e8;
+  border: 1px solid #e7e7e7;
+  color: white;
 }
 
 .messagesWrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: calc(100% - 110px);
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 110px);
+  overflow-y: auto;
 }
 
 .messages {
-    margin-top: auto;
-    width: 100%;
+  margin-top: auto;
+  width: 100%;
 }
 
 .messagesWrapper::-webkit-scrollbar {
-    width: 15px;
-    background: #101821;
+  width: 15px;
+  background: #101821;
+}
+
+.light .messagesWrapper::-webkit-scrollbar {
+  width: 15px;
+  background: #8ba1ac;
 }
 
 .messagesWrapper::-webkit-scrollbar-thumb {
-    background-color: #1d2d3b;
-    border-radius: 20px;
-    border: 4px solid #111922;
+  background-color: #1d2d3b;
+  border-radius: 20px;
+  border: 4px solid #111922;
+}
+
+.light .messagesWrapper::-webkit-scrollbar-thumb {
+  background-color: #62798d;
+  border-radius: 20px;
+  border: 4px solid #8ba1ac;
 }
 
 .message {
-    display: flex;
-    width: fit-content;
-    position: relative;
-    background: #1d2d3b;
-    border-radius: 8px;
-    max-width: 50%;
-    padding: 10px 40px 10px 10px;
-    margin: 5px 10px;
+  display: flex;
+  width: fit-content;
+  position: relative;
+  background: #24394a;
+  border-radius: 8px;
+  max-width: 50%;
+  padding: 10px 40px 10px 10px;
+  margin: 5px 10px;
+}
+
+.messageWrapper.self .message {
+  background: #1d2d3b;
+}
+
+.light .message {
+  background: #3dafec;
+}
+
+.light .self .message {
+  background: #2e85b4;
 }
 
 .dialogs .active {
-    color: #76b6ff;
+  color: #76b6ff;
 }
 
 .messagesHeaderWrapper {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
-    background: #1d2d3b;
-    z-index: 1;
-    box-shadow: 0 0 4px 1px #0f151c;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background: #1d2d3b;
+  z-index: 1;
+  box-shadow: 0 0 4px 1px #0f151c;
+}
+
+.light .messagesHeaderWrapper {
+  background: #a6cfe4;
+  color: #213845;
 }
 
 .cancel {
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    font-weight: 500;
-    left: 0;
-    height: 100%;
-    position: absolute;
-    transition: ease 200ms;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-weight: 500;
+  left: 0;
+  height: 100%;
+  position: absolute;
+  transition: ease 200ms;
+  cursor: pointer;
 }
 
 .cancel:hover {
-    color: #76b6ff;
+  color: #76b6ff;
+}
+
+.light .cancel:hover {
+  color: #2271cc;
 }
 
 .writerWrapper {
-    text-align: center;
+  text-align: center;
 }
 
 .name {
-    font-size: 18px;
-    font-weight: 500;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .status {
-    color: #90b4dc;
+  color: #90b4dc;
 }
 
-.messages>div {
-    position: relative;
+.light .status {
+  color: #205d7e;
+}
+
+.messages > div {
+  position: relative;
 }
 
 .dateSpan {
-    display: flex;
-    justify-content: center;
-    position: sticky;
-    top: 5px;
-    margin: 5px 0;
-    z-index: 2;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 5px;
+  margin: 5px 0;
+  z-index: 2;
 }
 
-.dateSpan>div{
-    width: max-content;
-    margin: 0 auto;
-    padding: 5px 10px;
-    background: #0a101469;
-    border-radius: 10px;
+.dateSpan > div {
+  width: max-content;
+  margin: 0 auto;
+  padding: 5px 10px;
+  background: #0a101469;
+  border-radius: 10px;
+}
+
+.light .dateSpan > div {
+  background: #49779584;
 }
 
 .Show {
-    animation: dateSpanShow 500ms ease forwards;
+  animation: dateSpanShow 500ms ease forwards;
 }
 
 .Hide {
-    animation: dateSpanHide 700ms ease forwards;
+  animation: dateSpanHide 700ms ease forwards;
 }
 
 .time {
-    bottom: 5px;
-    right: 5px;
-    color: #919ca4;
-    font-size: 13px;
-    position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: #919ca4;
+  font-size: 13px;
+  position: absolute;
+}
+
+.light .time {
+  color: white;
 }
 
 @keyframes dateSpanHide {
-    from {
-        opacity: 100%;
-    }
+  from {
+    opacity: 100%;
+  }
 
-    to {
-        opacity: 0;
-    }
+  to {
+    opacity: 0;
+  }
 }
 @keyframes dateSpanShow {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 100%;
-    }
+  to {
+    opacity: 100%;
+  }
 }

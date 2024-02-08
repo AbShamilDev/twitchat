@@ -1,85 +1,94 @@
 .nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: min-content;
-    grid-area: n;
-    background: linear-gradient(#0f151c, #131e27);
-    box-shadow: 0px 4px 4px 0px #3dafec;
-    border-radius: 10px;
-    padding: 15px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: min-content;
+  grid-area: n;
+  background: linear-gradient(#0f151c, #131e27);
+  box-shadow: 0px 4px 4px 0px #3dafec;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 }
 
+.nav.light {
+  background: linear-gradient(#fafafa, #e5e5e5);
+  box-shadow: 0px 4px 2px 0px #3dafec;
+  color: black;
+}
+
+.nav.light .item {
+  color: black;
+}
 .item {
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    text-decoration: none;
-    transition: ease 200ms;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: ease 200ms;
 }
 
 .item:hover {
-    color: #5fa0c2;
+  color: #5fa0c2;
 }
 
 .active {
-    color:#3dafec;
-    font-size: 20px;
-    text-decoration: none;
-    text-shadow: 0px 0px 1px  rgb(61, 175, 236);
+  color: #3dafec;
+  font-size: 20px;
+  text-decoration: none;
+  text-shadow: 0px 0px 1px rgb(61, 175, 236);
 }
 
 .friendsLine {
-    width: 110%;
-    height: 1px;
-    background: #3dafec;
-    box-shadow: 0 0px 1px 0px #3dafec;
+  width: 110%;
+  height: 1px;
+  background: #3dafec;
+  box-shadow: 0 0px 1px 0px #3dafec;
 }
 
 .navFriendsWrapper {
-    width: 100%;
-    margin-top: 100px;
-    font-size: 30px;
+  width: 100%;
+  margin-top: 100px;
+  font-size: 30px;
 }
 
 .column {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    gap: 10px;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+  flex-direction: column;
 }
 
 .row {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .navFriendsItem {
-    font-size: 12px;
-    font-weight: 400!important;
-    padding: 5px;
-    box-shadow: 0px 2px 2px 0px #3dafec;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: ease 200ms;
-    scale: 1.1;
+  font-size: 12px;
+  font-weight: 400 !important;
+  padding: 5px;
+  box-shadow: 0px 2px 2px 0px #3dafec;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: ease 200ms;
+  scale: 1.1;
 }
 
 .navFriendsItem:hover {
-    box-shadow: 0px 0px 1px 0px #3dafec, 0px -68px 20px -40px #3dafec inset;
-    scale: 1.2;
+  box-shadow: 0px 0px 1px 0px #3dafec, 0px -68px 20px -40px #3dafec inset;
+  scale: 1.2;
 }
 
 .navFriendsItem div {
-    border-radius: 25px;
-    margin: 0 auto;
-    width: 30px;
-    height: 30px;
-    overflow: hidden;
+  border-radius: 25px;
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
 }
 
 .navFriendsItem div img {
-    width: 30px;
+  width: 30px;
 }

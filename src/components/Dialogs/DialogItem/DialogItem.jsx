@@ -2,11 +2,6 @@ import React, { useEffect }  from "react"
 import s from '../Dialogs.module.css'
 import { NavLink } from "react-router-dom"
 
-const scrollChat = () => {
-    let chat = document.querySelector(`.${s.messages}`)
-    chat.scrollTop = chat.scrollHeight;
-}
-
 const DialogItem = (props) => {
     const activeCheck = (event) => {
         console.log(event)

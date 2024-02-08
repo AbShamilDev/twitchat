@@ -1,0 +1,80 @@
+.toggleWrapper {
+  position: absolute;
+  width: 90px;
+  height: 39px;
+  background-color: #0f161d;
+  border-radius: 50px;
+  bottom: 3%;
+  left: 5%;
+  border: 2px solid #1a4e6a;
+  transition: ease 150ms;
+
+  .toggleContainer {
+    display: flex;
+    padding: 0 11px;
+    position: relative;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  svg {
+    width: 20px;
+    z-index: 1;
+  }
+
+  .moonSvg {
+    fill: rgb(138, 195, 255);
+  }
+
+  .sunSvg {
+    fill: white;
+    position: absolute;
+    right: 9px;
+  }
+
+  .circleWrapper {
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    width: 45px;
+    height: 35px;
+    left: 3%;
+    transition: ease 150ms;
+    .circle {
+      background: #004971;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      transition: ease 200ms;
+    }
+  }
+}
+
+.toggleWrapper:hover {
+  .circle {
+    width: 45px;
+  }
+}
+
+//Светлая тема
+.toggleWrapper.light {
+  background-color: #ffffff;
+
+  .moonSvg {
+    fill: black;
+  }
+
+  .sunSvg {
+    fill: white;
+  }
+
+  .circleWrapper {
+    justify-content: end;
+    left: 48%;
+
+    .circle {
+      background: #32b7ff;
+    }
+  }
+}

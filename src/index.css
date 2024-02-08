@@ -1,9 +1,14 @@
 html {
-    background-color: #0f151c;
-    color: white;
+  background-color: #0f151c;
+  color: white;
+  transition: ease 150ms;
+}
+html.light {
+  background-color: white;
+  color: #0f151c;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
