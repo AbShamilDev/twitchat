@@ -12,24 +12,37 @@ const Dialogs = ({ theme }) => {
   const activeDialogId = useSelector(
     (state) => state.dialogSlice.activeDialogId
   );
+  const selfId = useSelector((state) => state.dataSlice.userInfo.id);
+
   const dispatch = useDispatch();
 
-  const fetchUsers = async () =>
+  const fetchUsers = async (selfId) =>
     await axios({
       method: "get",
       url: "https://b17d444024b5fb33.mokky.dev/users",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-    }).then((res) => dispatch(setUsersList(res.data)));
+    }).then((res) => {
+      const result = res.data;
+      console.log("fetch users");
+      dispatch(
+        setUsersList(
+          result.filter((user) => {
+            console.log(user.id, selfId, user.id !== selfId);
+            return user.id !== selfId;
+          })
+        )
+      );
+    });
 
   const onDialogItemClick = (id) => {
     dispatch(setActiveDialogId(id));
   };
 
   useEffect(() => {
-    if (!usersList.length) fetchUsers();
-  }, []);
+    if (!usersList.length) fetchUsers(selfId);
+  }, [selfId]);
 
   return (
     <div

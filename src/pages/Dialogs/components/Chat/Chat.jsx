@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 import Message from "../Message/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveDialogId } from "../../../../redux/dialogSlice/dialogSlice";
+import {
+  connectWebSocket,
+  disconnectWebSocket,
+  sendWebSocketMessage,
+} from "../../../../redux/websocketSlice/websocketActions";
 
 let oldMessageId;
 let loaded = false;
@@ -42,8 +47,6 @@ const Chat = ({ theme }) => {
   const receiverUser = useSelector((state) => state.dataSlice.usersList).find(
     (user) => user.id === activeDialogId
   );
-  const selfId = useSelector((state) => state.dataSlice.id);
-  const socket = useSelector((state) => state.socket);
 
   const dispatch = useDispatch();
 
@@ -80,8 +83,16 @@ const Chat = ({ theme }) => {
     hideDate(visElement);
   };
 
-  const sendMessage = async (message) => {
-    await socket.send(JSON.stringify({ message: message }));
+  useEffect(() => {
+    dispatch(connectWebSocket("wss://twitchatbackend.up.railway.app/"));
+
+    return () => {
+      dispatch(disconnectWebSocket());
+    };
+  }, [dispatch]);
+
+  const sendMessage = (message) => {
+    dispatch(sendWebSocketMessage(message));
   };
 
   return activeDialogId ? (

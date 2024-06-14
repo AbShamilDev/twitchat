@@ -1,33 +1,16 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useResolvedPath } from "react-router-dom";
 import Auth from "./pages/Auth/Auth";
 import UserInterface from "./pages/UserInterface/UserInterface";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserInfo } from "./redux/dataSlice/dataSlice";
-import {
-  connectWebSocket,
-  disconnectWebSocket,
-  sendWebSocketMessage,
-} from "./redux/websocketSlice/websocketActions";
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isConnected, messages } = useSelector((state) => state.websocket);
-
-  useEffect(() => {
-    dispatch(connectWebSocket("wss://twitchatbackend.up.railway.app/"));
-
-    return () => {
-      dispatch(disconnectWebSocket());
-    };
-  }, [dispatch]);
-
-  const sendMessage = (message) => {
-    dispatch(sendWebSocketMessage(message));
-  };
+  const path = useResolvedPath();
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -42,7 +25,8 @@ function App() {
       })
         .then((res) => {
           dispatch(setUserInfo(res.data));
-          navigate("/main");
+          path === "/" && navigate("/main");
+          console.log("fetch user");
         })
         .catch((err) => console.error(err));
     }
