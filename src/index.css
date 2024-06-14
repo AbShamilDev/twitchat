@@ -1,12 +1,3 @@
-html {
-  background-color: #0f151c;
-  color: white;
-}
-html.light {
-  background-color: white;
-  color: #0f151c;
-}
-
 * {
   margin: 0;
   padding: 0;

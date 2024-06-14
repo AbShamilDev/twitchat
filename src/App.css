@@ -1,15 +1,23 @@
-.app-wrapper {
-  margin: 0 auto;
+.appWrapper {
+  padding: 0 5%;
   position: relative;
   display: grid;
   width: 90%;
-  margin-top: 15px;
+  height: calc(100vh - 15px);
+  padding-top: 15px;
   grid-template-areas:
     "h h"
     "n c";
   grid-template-rows: 50px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 20px;
+  background-color: #0f151c;
+  color: white;
+}
+
+.appWrapper.light {
+  background-color: white;
+  color: #0f151c;
 }
 
 * {

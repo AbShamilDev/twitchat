@@ -15,7 +15,7 @@ const UserInterface = () => {
   return (
     <>
       <ThemeToggle theme={currentTheme} />
-      <div className="app-wrapper">
+      <div className={`appWrapper ${currentTheme === "dark" ? null : "light"}`}>
         <Header />
         <Navbar theme={currentTheme} />
         <div className="content">
