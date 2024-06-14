@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./components/DialogItem/DialogItem";
 import Chat from "./components/Chat/Chat";
@@ -22,6 +22,8 @@ const Dialogs = ({ theme }) => {
     navigate("./");
   };
 
+  useEffect(() => console.log("effect"), []);
+
   return (
     <div
       className={`${s.dialogs} ${activeDialog == 0 ? s.solo : ""} ${
@@ -34,9 +36,6 @@ const Dialogs = ({ theme }) => {
           cancelChat();
         }}
         theme={theme}
-        activeDialog={activeDialog}
-        messages={[]}
-        dialogs={[]}
       />
     </div>
   );

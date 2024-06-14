@@ -6,10 +6,34 @@ import UserInterface from "./pages/UserInterface/UserInterface";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "./redux/userSlice/userSlice";
+import { setSocket } from "./redux/socketSlice/socketSlice";
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const newSocket = new WebSocket("wss://twitchatbackend.up.railway.app/");
+
+    newSocket.onopen = () => {
+      console.log("Соединение установлено");
+      newSocket.send("Привет сервер!");
+    };
+
+    newSocket.onmessage = (event) => {
+      console.log("Сообщение от сервера:", event.data);
+    };
+
+    newSocket.onerror = (error) => {
+      console.error("Ошибка WebSocket:", error);
+    };
+
+    dispatch(setSocket(newSocket));
+
+    return () => {
+      newSocket.close();
+    };
+  }, []);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {

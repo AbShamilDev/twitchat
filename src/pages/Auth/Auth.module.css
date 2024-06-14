@@ -33,15 +33,6 @@
   border: none;
 }
 
-.mainButton {
-  font-weight: 500;
-  color: white;
-  background: #405a78;
-}
-
-.secondaryButton {
-}
-
 .buttonsContainer {
   margin-top: 10px;
   gap: 10px;

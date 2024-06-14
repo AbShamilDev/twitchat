@@ -34,32 +34,7 @@ const debounce = (fn, ms) => {
 
 const Chat = ({ theme }) => {
   let lastMessageId;
-  const [socket, setSocket] = useState(null);
   const [message, setMessage] = useState([]);
-  useEffect(() => {
-    const newSocket = new WebSocket("wss://twitchatbackend.up.railway.app/");
-
-    newSocket.onopen = () => {
-      console.log("Соединение установлено");
-      newSocket.send("Привет сервер!");
-    };
-
-    newSocket.onmessage = (event) => {
-      console.log("Сообщение от сервера:", event.data);
-    };
-
-    newSocket.onerror = (error) => {
-      console.error("Ошибка WebSocket:", error);
-    };
-
-    setSocket(newSocket);
-
-    // return () => {
-    //   newSocket.close();
-    // };
-  }, []);
-
-  console.log(socket);
 
   const CleanDateSpans = (element) => {
     if (!element) return;

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const state = {
   userInfo: {},
   dialogs: [],
+  messages: [],
 };
 
 const userSlice = createSlice({
@@ -12,8 +13,11 @@ const userSlice = createSlice({
     setUserInfo: (state, action) => {
       state.userInfo = action.payload;
     },
+    setDialogs: (state, action) => {
+      state.dialogs = action.payload;
+    },
     setMessages: (state, action) => {
-      state.userInfo = action.payload;
+      state.messages = action.payload;
     },
   },
 });
