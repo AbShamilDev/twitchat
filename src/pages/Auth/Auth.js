@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { setUserInfo } from "../../redux/userSlice/userSlice";
 
 const Auth = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(!!localStorage.getItem("logged_in"));
   const formRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Auth = () => {
     const formData = new FormData(formRef.current);
 
     const successAuth = (data) => {
-      console.log(data);
+      localStorage.setItem("logged_in", true);
       localStorage.setItem("token", data.token);
       dispatch(setUserInfo(data.data));
       navigate("/main");
@@ -57,9 +57,7 @@ const Auth = () => {
           password: formData.get("password"),
         }),
       })
-        .then((res) => {
-          successAuth(res.data);
-        })
+        .then((res) => successAuth(res.data))
         .catch((err) => console.error(err));
     }
   };
