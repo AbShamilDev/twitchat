@@ -46,7 +46,10 @@ function App() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
-        .then((res) => dispatch(setUserInfo(res.data)))
+        .then((res) => {
+          dispatch(setUserInfo(res.data));
+          navigate("/main");
+        })
         .catch((err) => console.error(err));
     }
   }, []);
