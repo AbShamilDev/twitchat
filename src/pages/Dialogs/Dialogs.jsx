@@ -2,41 +2,35 @@ import React, { useEffect, useState } from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./components/DialogItem/DialogItem";
 import Chat from "./components/Chat/Chat";
-import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setUsersList } from "../../redux/userSlice/userSlice";
 
 const Dialogs = ({ theme }) => {
-  const params = useParams();
-  console.log(params);
-  const [activeDialog, setDialog] = useState(params["*"] ? params["*"] : 0);
-  const dialogsElements = [].map((d) => (
-    <DialogItem
-      id={d.id}
-      activeDialog={activeDialog}
-      name={d.name}
-      setDialog={(el) => setDialog(el)}
-    />
-  ));
-  const navigate = useNavigate();
+  const usersList = useSelector((state) => state.userSlice.usersList);
+  const dispatch = useDispatch();
 
-  const cancelChat = () => {
-    navigate("./");
-  };
+  const fetchUsers = async () =>
+    await axios({
+      method: "get",
+      url: "https://b17d444024b5fb33.mokky.dev/users",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => dispatch(setUsersList(res.data)));
 
-  useEffect(() => console.log("effect"), []);
+  useEffect(() => {
+    if (!usersList.length) fetchUsers();
+  }, []);
 
   return (
-    <div
-      className={`${s.dialogs} ${activeDialog == 0 ? s.solo : ""} ${
-        theme === "dark" ? null : s.light
-      }`}
-    >
-      <div className={s.users}>{dialogsElements}</div>
-      <Chat
-        cancelChat={() => {
-          cancelChat();
-        }}
-        theme={theme}
-      />
+    <div className={`${s.solo} ${theme === "dark" ? null : s.light}`}>
+      <div className={s.users}>
+        {usersList.map((d) => (
+          <DialogItem id={d.id} name={d.fullName} />
+        ))}
+      </div>
+      {/* <Chat cancelChat={() => {}} theme={theme} /> */}
     </div>
   );
 };

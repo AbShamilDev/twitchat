@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const state = {
   userInfo: {},
-  dialogs: [],
+  usersList: [],
   messages: [],
 };
 
@@ -13,8 +13,8 @@ const userSlice = createSlice({
     setUserInfo: (state, action) => {
       state.userInfo = action.payload;
     },
-    setDialogs: (state, action) => {
-      state.dialogs = action.payload;
+    setUsersList: (state, action) => {
+      state.usersList = action.payload;
     },
     setMessages: (state, action) => {
       state.messages = action.payload;
@@ -23,4 +23,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { setUserInfo, setMessages } = userSlice.actions;
+export const { setUserInfo, setUsersList, setMessages } = userSlice.actions;
