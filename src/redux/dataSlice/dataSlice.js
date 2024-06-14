@@ -6,8 +6,8 @@ const state = {
   messages: [],
 };
 
-const userSlice = createSlice({
-  name: "userSlice",
+const dataSlice = createSlice({
+  name: "dataSlice",
   initialState: state,
   reducers: {
     setUserInfo: (state, action) => {
@@ -16,11 +16,11 @@ const userSlice = createSlice({
     setUsersList: (state, action) => {
       state.usersList = action.payload;
     },
-    setMessages: (state, action) => {
+    setAllMessages: (state, action) => {
       state.messages = action.payload;
     },
   },
 });
 
-export default userSlice.reducer;
-export const { setUserInfo, setUsersList, setMessages } = userSlice.actions;
+export default dataSlice.reducer;
+export const { setUserInfo, setUsersList, setAllMessages } = dataSlice.actions;

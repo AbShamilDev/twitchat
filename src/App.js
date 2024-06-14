@@ -4,36 +4,30 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Auth from "./pages/Auth/Auth";
 import UserInterface from "./pages/UserInterface/UserInterface";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setUserInfo } from "./redux/userSlice/userSlice";
-import { setSocket } from "./redux/socketSlice/socketSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserInfo } from "./redux/dataSlice/dataSlice";
+import {
+  connectWebSocket,
+  disconnectWebSocket,
+  sendWebSocketMessage,
+} from "./redux/websocketSlice/websocketActions";
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isConnected, messages } = useSelector((state) => state.websocket);
 
   useEffect(() => {
-    const newSocket = new WebSocket("wss://twitchatbackend.up.railway.app/");
-
-    newSocket.onopen = () => {
-      console.log("Соединение установлено");
-      newSocket.send("Привет сервер!");
-    };
-
-    newSocket.onmessage = (event) => {
-      console.log("Сообщение от сервера:", event.data);
-    };
-
-    newSocket.onerror = (error) => {
-      console.error("Ошибка WebSocket:", error);
-    };
-
-    dispatch(setSocket(newSocket));
+    dispatch(connectWebSocket("wss://twitchatbackend.up.railway.app/"));
 
     return () => {
-      newSocket.close();
+      dispatch(disconnectWebSocket());
     };
-  }, []);
+  }, [dispatch]);
+
+  const sendMessage = (message) => {
+    dispatch(sendWebSocketMessage(message));
+  };
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {

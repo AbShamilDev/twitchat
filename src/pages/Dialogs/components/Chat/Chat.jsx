@@ -3,6 +3,8 @@ import s from "../../Dialogs.module.css";
 import MessageInput from "../MessageInput/MessageInput";
 import { useEffect, useState } from "react";
 import Message from "../Message/Message";
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveDialogId } from "../../../../redux/dialogSlice/dialogSlice";
 
 let oldMessageId;
 let loaded = false;
@@ -33,8 +35,17 @@ const debounce = (fn, ms) => {
 };
 
 const Chat = ({ theme }) => {
-  let lastMessageId;
   const [message, setMessage] = useState([]);
+  const { activeDialogId, messages } = useSelector(
+    (state) => state.dialogSlice
+  );
+  const receiverUser = useSelector((state) => state.dataSlice.usersList).find(
+    (user) => user.id === activeDialogId
+  );
+  const selfId = useSelector((state) => state.dataSlice.id);
+  const socket = useSelector((state) => state.socket);
+
+  const dispatch = useDispatch();
 
   const CleanDateSpans = (element) => {
     if (!element) return;
@@ -69,19 +80,33 @@ const Chat = ({ theme }) => {
     hideDate(visElement);
   };
 
-  return (
+  const sendMessage = async (message) => {
+    await socket.send(JSON.stringify({ message: message }));
+  };
+
+  return activeDialogId ? (
     <div className={s.chat}>
-      <MessagesHeader cancelChat={() => {}} name="Валера" />
+      <MessagesHeader
+        cancelChat={() => dispatch(setActiveDialogId(0))}
+        name={receiverUser.fullName}
+      />
       <div className={s.messagesWrapper} onScroll={onScrollChat}>
-        {/* {messagesElements.length ? (
-          <div className={s.messages}>{messagesElements}</div>
+        {messages.length ? (
+          <div className={s.messages}>
+            {messages.map((message) => (
+              <Message />
+            ))}
+          </div>
         ) : (
           <h1>Нет сообщений</h1>
-        )} */}
+        )}
       </div>
-      <MessageInput theme={theme} sendMessage={(message) => {}} />
+      <MessageInput
+        theme={theme}
+        sendMessage={(message) => sendMessage(message)}
+      />
     </div>
-  );
+  ) : null;
 };
 
 export default Chat;

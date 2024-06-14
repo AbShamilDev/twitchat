@@ -3,7 +3,7 @@ import s from "./Auth.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUserInfo } from "../../redux/userSlice/userSlice";
+import { setUserInfo } from "../../redux/dataSlice/dataSlice";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(!!localStorage.getItem("logged_in"));

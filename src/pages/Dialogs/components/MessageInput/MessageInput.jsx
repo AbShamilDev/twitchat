@@ -2,12 +2,12 @@ import s from "./MessageInput.module.css";
 import SendIcon from "../../svg/SendIcon";
 import { useState } from "react";
 
-const MessageInput = (props) => {
+const MessageInput = ({ theme, sendMessage }) => {
   const [message, setMessage] = useState("");
-  console.log(props.theme);
+  console.log(theme);
   return (
     <div
-      className={`${s.inputWrapper} ${props.theme === "dark" ? null : s.light}`}
+      className={`${s.inputWrapper} ${theme === "dark" ? null : s.light}`}
       action=""
     >
       <input
@@ -16,7 +16,7 @@ const MessageInput = (props) => {
         placeholder="Начните писать..."
         onKeyUp={(el) => {
           if (el.key == "Enter") {
-            props.sendMessage(message);
+            sendMessage(message);
             setMessage("");
           }
         }}
@@ -26,7 +26,7 @@ const MessageInput = (props) => {
       />
       <span
         onClick={() => {
-          props.sendMessage(message);
+          sendMessage(message);
           setMessage("");
         }}
         className={s.sendButton}

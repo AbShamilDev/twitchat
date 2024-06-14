@@ -16,17 +16,19 @@
 .users {
   display: flex;
   flex-direction: column;
-  gap: 5px;
 }
 
 .user {
   display: flex;
   padding: 10px;
+  font-size: 16px;
   font-weight: 500;
-  height: 20px;
+  text-align: left;
   width: 100%;
   color: rgb(181, 181, 181);
   text-decoration: none;
+  background: none;
+  border: none;
 }
 
 .dialogs.light .user {
