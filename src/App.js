@@ -6,13 +6,14 @@ import UserInterface from "./pages/UserInterface/UserInterface";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUserInfo, setUsersList } from "./redux/dataSlice/dataSlice";
+import { setMessages } from "./redux/dialogSlice/dialogSlice";
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const path = useResolvedPath();
 
-  const fetchUsers = async (selfId) =>
+  const fetchData = async (selfId) => {
     await axios({
       method: "get",
       url: "https://b17d444024b5fb33.mokky.dev/users",
@@ -23,6 +24,17 @@ function App() {
       const result = res.data;
       dispatch(setUsersList(result.filter((user) => user.id !== selfId)));
     });
+    await axios({
+      method: "get",
+      url: `https://b17d444024b5fb33.mokky.dev/messages?chatMembers.id=${selfId}`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      const result = res.data;
+      dispatch(setMessages(result));
+    });
+  };
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -37,7 +49,7 @@ function App() {
       })
         .then((res) => {
           dispatch(setUserInfo(res.data));
-          fetchUsers(res.data.id);
+          fetchData(res.data.id);
           path.pathname === "/" && navigate("/main");
           console.log(path);
         })

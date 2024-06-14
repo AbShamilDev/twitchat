@@ -1,10 +1,11 @@
 import s from "./MessageInput.module.css";
 import SendIcon from "../../svg/SendIcon";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const MessageInput = ({ theme, sendMessage }) => {
+const MessageInput = ({ theme, sendMessage, activeDialogId }) => {
   const [message, setMessage] = useState("");
-  console.log(theme);
+
   return (
     <div
       className={`${s.inputWrapper} ${theme === "dark" ? null : s.light}`}

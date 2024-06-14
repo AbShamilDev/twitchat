@@ -40,13 +40,15 @@ const debounce = (fn, ms) => {
 };
 
 const Chat = ({ theme }) => {
-  const [message, setMessage] = useState([]);
   const { activeDialogId, messages } = useSelector(
     (state) => state.dialogSlice
   );
+
   const receiverUser = useSelector((state) => state.dataSlice.usersList).find(
     (user) => user.id === activeDialogId
   );
+
+  const selfId = useSelector((state) => state.dataSlice.userInfo.id);
 
   const dispatch = useDispatch();
 
@@ -92,7 +94,16 @@ const Chat = ({ theme }) => {
   }, [dispatch]);
 
   const sendMessage = (message) => {
-    dispatch(sendWebSocketMessage(message));
+    dispatch(
+      sendWebSocketMessage(
+        JSON.stringify({
+          type: "message",
+          message,
+          sender: selfId,
+          reciver: activeDialogId,
+        })
+      )
+    );
   };
 
   return activeDialogId ? (
@@ -115,6 +126,7 @@ const Chat = ({ theme }) => {
       <MessageInput
         theme={theme}
         sendMessage={(message) => sendMessage(message)}
+        activeDialogId={activeDialogId}
       />
     </div>
   ) : null;
