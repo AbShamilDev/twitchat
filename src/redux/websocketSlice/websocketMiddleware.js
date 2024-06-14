@@ -9,7 +9,9 @@ const websocketMiddleware = (store) => {
         if (socket !== null) {
           socket.close();
         }
-        socket = new WebSocket(action.payload.url);
+        socket = new WebSocket(
+          `${action.payload.url}?userId=${action.payload.userId}`
+        );
 
         socket.onopen = () => {
           store.dispatch(setIsConnected(true));
