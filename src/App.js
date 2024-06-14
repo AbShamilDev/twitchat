@@ -25,8 +25,8 @@ function App() {
       })
         .then((res) => {
           dispatch(setUserInfo(res.data));
-          path === "/" && navigate("/main");
-          console.log("fetch user");
+          path.pathname === "/" && navigate("/main");
+          console.log(path);
         })
         .catch((err) => console.error(err));
     }
