@@ -4,16 +4,15 @@
   gap: 10px;
   height: min-content;
   grid-area: n;
-  background: linear-gradient(#0f151c, #131e27);
+  background-image: linear-gradient(#0f151c, #131e27);
   box-shadow: 0px 4px 4px 0px #3dafec;
   border-radius: 10px;
   padding: 15px;
-  font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
 
 .nav.light {
-  background: linear-gradient(#fafafa, #e5e5e5);
+  background-image: linear-gradient(#fafafa, #e5e5e5);
   box-shadow: 0px 4px 2px 0px #3dafec;
   color: black;
 }

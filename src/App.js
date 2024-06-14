@@ -1,52 +1,37 @@
-import React from "react";
-import "./componentsCss/App.css";
-import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
-import Settings from "./components/Settings/Settings";
-import Music from "./components/Music/Music";
-import News from "./components/News/News";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
-import { ThemeContext, themes } from "./contexts/ThemeContext";
+import React, { useEffect } from "react";
+import "./App.css";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Auth from "./pages/Auth/Auth";
+import UserInterface from "./pages/UserInterface/UserInterface";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "./redux/userSlice/userSlice";
 
-function App(props) {
+function App() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/auth");
+    } else {
+      axios({
+        method: "get",
+        url: "https://b17d444024b5fb33.mokky.dev/auth_me",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => dispatch(setUserInfo(res.data)))
+        .catch((err) => console.error(err));
+    }
+  }, []);
+
   return (
-    <ThemeContext.Consumer>
-      {({ theme, setTheme }) => (
-        <BrowserRouter>
-          <ThemeToggle
-            onChange={() => {
-              if (theme === "dark") setTheme(themes.light);
-              else setTheme(themes.dark);
-            }}
-            theme={theme}
-          />
-          <div className="app-wrapper">
-            <Header theme={theme} />
-            <Navbar theme={theme} />
-            <div className="content">
-              <Routes>
-                <Route
-                  path="/profile"
-                  element={<Profile state={props.state.profilePage} />}
-                />
-                <Route
-                  path="/dialogs/*"
-                  element={
-                    <Dialogs theme={theme} state={props.state.dialogsPage} />
-                  }
-                />
-                <Route path="/news" element={<News />} />
-                <Route path="/music" element={<Music />} />
-                <Route path="/settings" element={<Settings />} />
-              </Routes>
-            </div>
-          </div>
-        </BrowserRouter>
-      )}
-    </ThemeContext.Consumer>
+    <Routes>
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/main/*" element={<UserInterface />} />
+    </Routes>
   );
 }
 

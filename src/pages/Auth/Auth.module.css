@@ -1,0 +1,64 @@
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.formWrapper {
+  padding: 16px;
+  border: 1px solid rgb(161, 224, 255);
+  gap: 20px;
+  min-width: 350px;
+  border-radius: 10px;
+}
+
+.form {
+  gap: 10px;
+}
+
+.form > input {
+  font-size: 16px;
+  padding: 4px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+
+.mainButton {
+  font-weight: 500;
+  color: white;
+  background: #405a78;
+}
+
+.secondaryButton {
+}
+
+.buttonsContainer {
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.buttonsContainer > button {
+  font-size: 16px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.623);
+  background: #1e2a38;
+}
+
+.buttonsContainer :first-child {
+  font-weight: 500;
+  color: white;
+  background: #405a78;
+}

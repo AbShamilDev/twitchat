@@ -2,13 +2,24 @@ import React from "react";
 import s from "./Header.module.css";
 import logo from "./../../img/headerImgs/Logo.png";
 import Miniatura from "./Miniatura";
-import Player from "./Player";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ theme }) => {
+const Header = ({}) => {
+  const theme = useSelector((state) => state.themeSlice.theme);
+  const navigate = useNavigate();
   return (
     <header className={`${s.header} ${theme === "dark" ? null : s.light}`}>
       <img className={s.logo} src={logo} alt="" />
       <h2>Switter X</h2>
+      <button
+        onClick={() => {
+          localStorage.removeItem("token");
+          navigate("/auth");
+        }}
+      >
+        logout
+      </button>
       {/* <Player /> */}
       <Miniatura />
     </header>

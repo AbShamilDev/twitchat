@@ -21,7 +21,6 @@
 
 .user {
   display: flex;
-  font-family: "Montserrat", sans-serif;
   padding: 10px;
   font-weight: 500;
   height: 20px;
@@ -50,7 +49,6 @@
   background: #131e27;
   border-radius: 10px;
   width: 100%;
-  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   overflow: hidden;
 }

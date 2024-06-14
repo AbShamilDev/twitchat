@@ -1,5 +1,5 @@
 import s from "./MessageInput.module.css";
-import SendIcon from "../svg/SendIcon";
+import SendIcon from "../../svg/SendIcon";
 import { useState } from "react";
 
 const MessageInput = (props) => {

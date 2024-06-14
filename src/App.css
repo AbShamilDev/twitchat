@@ -12,6 +12,11 @@
   grid-gap: 20px;
 }
 
+* {
+  -webkit-transition: background-image 1s ease-in-out;
+  transition: background-image 1s ease-in-out;
+}
+
 .content {
   grid-area: c;
   /* background-color: rgb(242, 242, 242); */
