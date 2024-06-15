@@ -99,9 +99,17 @@
     justify-content: space-around;
     width: 100%;
     bottom: 0;
+    height: 70px;
+    padding: 20px;
+    box-shadow: 0px 9px 12px 13px #3dafec;
     border-radius: 0;
   }
-  .nav .navFriendsWrapper {
+
+  .navFriendsWrapper {
+    display: none;
+  }
+
+  .nav.hide {
     display: none;
   }
 }

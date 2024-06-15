@@ -19,6 +19,14 @@
   color: #0f151c;
 }
 
+body {
+  background-color: white;
+}
+
+body.dark {
+  background-color: #0f151c;
+}
+
 * {
   -webkit-transition: background-image 1s ease-in-out;
   transition: background-image 1s ease-in-out;

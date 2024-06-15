@@ -2,8 +2,11 @@ import React, { useRef } from "react";
 import s from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import NavFriends from "./NavFriends";
+import { useSelector } from "react-redux";
 
 const Navbar = ({ theme }) => {
+  const activeDialog = useSelector((state) => state.dialogSlice.activeDialogId);
+
   const links = useRef([
     {
       name: "Profile",
@@ -28,7 +31,11 @@ const Navbar = ({ theme }) => {
   ]);
 
   return (
-    <nav className={`${s.nav} ${theme === "dark" ? null : s.light}`}>
+    <nav
+      className={`${s.nav} ${activeDialog && s.hide} ${
+        theme === "dark" ? null : s.light
+      }`}
+    >
       {links.current.map((link, index) => (
         <NavLink
           key={index}

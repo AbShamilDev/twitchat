@@ -6,13 +6,11 @@ import { setTheme } from "../../redux/themeSlice/themeSlice";
 const ThemeToggle = () => {
   const dispatch = useDispatch();
   const currentTheme = useSelector((state) => state.themeSlice.theme);
+  document.body.classList.toggle("dark", currentTheme === "dark");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      if (currentTheme !== savedTheme) dispatch(setTheme(savedTheme));
-    } else localStorage.setItem("theme", currentTheme);
-  }, []);
+    localStorage.setItem("theme", currentTheme);
+  }, [currentTheme]);
 
   return (
     <div
