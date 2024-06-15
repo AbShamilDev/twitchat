@@ -12,6 +12,7 @@ const websocketMiddleware = (store) => {
         socket = new WebSocket(
           `${action.payload.url}?userId=${action.payload.userId}`
         );
+        console.log(`${action.payload.url}?userId=${action.payload.userId}`);
 
         socket.onopen = () => {
           store.dispatch(setIsConnected(true));
@@ -23,6 +24,7 @@ const websocketMiddleware = (store) => {
 
         socket.onmessage = (event) => {
           store.dispatch(addMessage(event.data));
+          //   store.dispatch(setMessages({userU}))
         };
 
         break;

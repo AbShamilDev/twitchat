@@ -91,7 +91,7 @@ const Chat = ({ theme }) => {
     return () => {
       dispatch(disconnectWebSocket());
     };
-  }, [dispatch]);
+  }, [selfId]);
 
   const sendMessage = (message) => {
     dispatch(

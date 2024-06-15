@@ -3,9 +3,11 @@ import { createAction } from "@reduxjs/toolkit";
 // Action Creators
 export const connectWebSocket = createAction(
   "websocket/connect",
-  (url, userId) => ({
-    payload: { url, userId },
-  })
+  (url, userId) => {
+    return {
+      payload: { url, userId },
+    };
+  }
 );
 
 export const disconnectWebSocket = createAction("websocket/disconnect");
