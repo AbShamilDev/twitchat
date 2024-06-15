@@ -86,11 +86,15 @@ const Chat = ({ theme }) => {
   };
 
   useEffect(() => {
-    dispatch(connectWebSocket("wss://twitchatbackend.up.railway.app/", selfId));
+    if (selfId) {
+      dispatch(
+        connectWebSocket("wss://twitchatbackend.up.railway.app/", selfId)
+      );
 
-    return () => {
-      dispatch(disconnectWebSocket());
-    };
+      return () => {
+        dispatch(disconnectWebSocket());
+      };
+    }
   }, [selfId]);
 
   const sendMessage = (message) => {
