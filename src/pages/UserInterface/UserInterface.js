@@ -13,25 +13,19 @@ const UserInterface = () => {
   const currentTheme = useSelector((state) => state.themeSlice.theme);
 
   return (
-    <>
-      <ThemeToggle theme={currentTheme} />
-      <div className={`appWrapper ${currentTheme === "dark" ? null : "light"}`}>
-        <Header />
-        <Navbar theme={currentTheme} />
-        <div className="content">
-          <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route
-              path="/dialogs/*"
-              element={<Dialogs theme={currentTheme} />}
-            />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
-          </Routes>
-        </div>
+    <div className={`appWrapper ${currentTheme === "dark" ? null : "light"}`}>
+      <Header />
+      <Navbar theme={currentTheme} />
+      <div className="content">
+        <Routes>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dialogs/*" element={<Dialogs theme={currentTheme} />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/music" element={<Music />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
       </div>
-    </>
+    </div>
   );
 };
 

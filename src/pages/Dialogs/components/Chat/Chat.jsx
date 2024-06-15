@@ -113,7 +113,7 @@ const Chat = ({ theme }) => {
   return activeDialogId ? (
     <div className={s.chat}>
       <MessagesHeader
-        cancelChat={() => dispatch(setActiveDialogId(0))}
+        cancelChat={() => dispatch(setActiveDialogId(null))}
         name={receiverUser.fullName}
       />
       <div className={s.messagesWrapper} onScroll={onScrollChat}>

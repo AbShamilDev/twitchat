@@ -10,8 +10,8 @@ const Header = ({}) => {
   const navigate = useNavigate();
   return (
     <header className={`${s.header} ${theme === "dark" ? null : s.light}`}>
-      <img className={s.logo} src={logo} alt="" />
-      <h2>Switter X</h2>
+      {/* <img className={s.logo} src={logo} alt="" /> */}
+      <h2>/ Switter X</h2>
       <button
         onClick={() => {
           localStorage.removeItem("token");

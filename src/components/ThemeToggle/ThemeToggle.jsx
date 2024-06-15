@@ -1,24 +1,25 @@
 import { useEffect } from "react";
 import "./ThemeToggle.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../../redux/themeSlice/themeSlice";
 
-const ThemeToggle = ({ theme }) => {
+const ThemeToggle = () => {
   const dispatch = useDispatch();
+  const currentTheme = useSelector((state) => state.themeSlice.theme);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
-      if (theme !== savedTheme) dispatch(setTheme(savedTheme));
-    } else localStorage.setItem("theme", theme);
+      if (currentTheme !== savedTheme) dispatch(setTheme(savedTheme));
+    } else localStorage.setItem("theme", currentTheme);
   }, []);
 
   return (
     <div
       onClick={() => {
-        dispatch(setTheme(theme === "dark" ? "light" : "dark"));
+        dispatch(setTheme(currentTheme === "dark" ? "light" : "dark"));
       }}
-      className={`toggleWrapper ${theme === "dark" ? null : "light"}`}
+      className={`toggleWrapper ${currentTheme === "dark" ? null : "light"}`}
     >
       <div className="toggleContainer">
         <div className="circleWrapper">

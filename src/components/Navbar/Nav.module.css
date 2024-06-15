@@ -91,3 +91,17 @@
 .navFriendsItem div img {
   width: 30px;
 }
+
+@media (max-width: 800px) {
+  .nav {
+    position: absolute;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    bottom: 0;
+    border-radius: 0;
+  }
+  .nav .navFriendsWrapper {
+    display: none;
+  }
+}

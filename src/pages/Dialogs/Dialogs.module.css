@@ -1,6 +1,6 @@
 .dialogs {
   display: grid;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 1fr;
   height: 80vh;
   padding: 20px;
 }
@@ -9,12 +9,12 @@
   grid-template-columns: none;
 }
 
-.dialogs.solo .chat {
-  display: none;
+.dialogs.solo .users {
+  display: flex;
 }
 
 .users {
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 
