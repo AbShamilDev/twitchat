@@ -20,6 +20,7 @@
 .nav.light .item {
   color: black;
 }
+
 .item {
   color: white;
   font-size: 20px;
@@ -27,8 +28,13 @@
   transition: ease 200ms;
 }
 
-.item:hover {
-  color: #5fa0c2;
+.item path {
+  stroke: white;
+  transition: ease 200ms;
+}
+
+.item:hover path {
+  stroke: #5fa0c2 !important;
 }
 
 .active {

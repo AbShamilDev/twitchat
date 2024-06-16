@@ -24,6 +24,8 @@ function App() {
       const result = res.data;
       dispatch(setUsersList(result.filter((user) => user.id !== selfId)));
     });
+    // .catch(() => setTimeout(() => fetchData(selfId)), 1000);
+
     await axios({
       method: "get",
       url: `https://b17d444024b5fb33.mokky.dev/messages?chatMembers.id=${selfId}`,

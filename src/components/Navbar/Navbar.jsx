@@ -3,13 +3,14 @@ import s from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import NavFriends from "./NavFriends";
 import { useSelector } from "react-redux";
+import profileIcon from "../../img/navbarIcons/user.svg";
 
 const Navbar = ({ theme }) => {
   const activeDialog = useSelector((state) => state.dialogSlice.activeDialogId);
 
   const links = useRef([
     {
-      name: "Profile",
+      name: <svg>{profileIcon}</svg>,
       to: "./profile",
     },
     {
