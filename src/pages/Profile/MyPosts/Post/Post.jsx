@@ -1,14 +1,19 @@
-import React from 'react';
-import s from './Post.module.css'
+import React from "react";
+import s from "./Post.module.css";
 
 const Post = (props) => {
-  return <div className={s.item}>
-    <img src='https://variety.com/wp-content/uploads/2021/04/Avatar.jpg' />
-    {props.message}
-    <div>
-      <span>like</span> {props.likesCount}
+  return (
+    <div className={s.item}>
+      <img
+        src="https://variety.com/wp-content/uploads/2021/04/Avatar.jpg"
+        alt="avatar"
+      />
+      {props.message}
+      <div>
+        <span>like</span> {props.likesCount}
+      </div>
     </div>
-  </div>
-}
+  );
+};
 
-export default Post
+export default Post;

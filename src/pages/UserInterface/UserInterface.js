@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
-import ThemeToggle from "../../components/ThemeToggle/ThemeToggle";
 import Profile from "../Profile/Profile";
 import Dialogs from "../Dialogs/Dialogs";
 import News from "../News/News";
@@ -11,10 +10,14 @@ import { useSelector } from "react-redux";
 
 const UserInterface = () => {
   const currentTheme = useSelector((state) => state.themeSlice.theme);
-  const activeDialog = useSelector(state => state.dialogSlice.activeDialogId)
+  const activeDialog = useSelector((state) => state.dialogSlice.activeDialogId);
 
   return (
-    <div className={`appWrapper ${currentTheme === "dark" ? null : "light"} ${activeDialog && "chat"}`}>
+    <div
+      className={`appWrapper ${currentTheme === "dark" ? null : "light"} ${
+        activeDialog && "chat"
+      }`}
+    >
       <Header />
       <Navbar theme={currentTheme} />
       <div className="content">

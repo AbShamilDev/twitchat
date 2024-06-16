@@ -16,7 +16,7 @@ const MessageInput = ({ theme, sendMessage, activeDialogId }) => {
         value={message}
         placeholder="Начните писать..."
         onKeyUp={(el) => {
-          if (el.key == "Enter") {
+          if (el.key === "Enter") {
             sendMessage(message);
             setMessage("");
           }
