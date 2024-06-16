@@ -14,7 +14,7 @@ const UserInterface = () => {
   const activeDialog = useSelector(state => state.dialogSlice.activeDialogId)
 
   return (
-    <div className={`appWrapper ${currentTheme === "dark" ? null : "light"} ${activeDialog && s.chat}`}>
+    <div className={`appWrapper ${currentTheme === "dark" ? null : "light"} ${activeDialog && "chat"}`}>
       <Header />
       <Navbar theme={currentTheme} />
       <div className="content">
