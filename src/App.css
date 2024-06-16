@@ -46,4 +46,7 @@ body.dark {
     grid-gap: 0px;
     padding: 0;
   }
+  .appWrapper.chat {
+    grid-template-areas: "c";
+  }
 }

@@ -11,9 +11,10 @@ import { useSelector } from "react-redux";
 
 const UserInterface = () => {
   const currentTheme = useSelector((state) => state.themeSlice.theme);
+  const activeDialog = useSelector(state => state.dialogSlice.activeDialogId)
 
   return (
-    <div className={`appWrapper ${currentTheme === "dark" ? null : "light"}`}>
+    <div className={`appWrapper ${currentTheme === "dark" ? null : "light"} ${activeDialog && "chat"}`}>
       <Header />
       <Navbar theme={currentTheme} />
       <div className="content">
