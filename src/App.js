@@ -36,6 +36,8 @@ function App() {
     });
   };
 
+
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/auth");
@@ -55,6 +57,15 @@ function App() {
         })
         .catch((err) => console.error(err));
     }
+    const handleTouchMove = (event) => {
+      event.preventDefault();
+    };
+
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      document.removeEventListener('touchmove', handleTouchMove);
+    };
   }, []);
 
   return (
