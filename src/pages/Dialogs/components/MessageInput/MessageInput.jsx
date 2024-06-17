@@ -1,10 +1,10 @@
 import s from "./MessageInput.module.css";
 import SendIcon from "../../svg/SendIcon";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useRef, useState } from "react";
 
-const MessageInput = ({ theme, sendMessage, recipientId }) => {
+const MessageInput = ({ theme, sendMessage }) => {
   const [message, setMessage] = useState("");
+  const inputRef = useRef(null);
 
   return (
     <div
@@ -12,12 +12,13 @@ const MessageInput = ({ theme, sendMessage, recipientId }) => {
       action=""
     >
       <input
+        ref={inputRef}
         onInput={(el) => setMessage(el.target.value)}
         value={message}
         placeholder="Начните писать..."
         onKeyUp={(el) => {
           if (el.key === "Enter") {
-            sendMessage(message);
+            sendMessage(message, inputRef);
             setMessage("");
           }
         }}

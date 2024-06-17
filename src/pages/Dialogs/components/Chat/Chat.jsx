@@ -72,7 +72,7 @@ const Chat = ({ theme, recipientId, messages }) => {
     hideDate(visElement);
   };
 
-  const sendMessage = (message) => {
+  const sendMessage = (message, inputRef) => {
     dispatch(
       sendWebSocketMessage(
         JSON.stringify({
@@ -85,6 +85,7 @@ const Chat = ({ theme, recipientId, messages }) => {
         })
       )
     );
+    inputRef.current.forus();
   };
 
   return recipientId ? (
@@ -110,7 +111,7 @@ const Chat = ({ theme, recipientId, messages }) => {
       </div>
       <MessageInput
         theme={theme}
-        sendMessage={(message) => sendMessage(message)}
+        sendMessage={(message, inputRef) => sendMessage(message, inputRef)}
         recipientId={recipientId}
       />
     </div>
