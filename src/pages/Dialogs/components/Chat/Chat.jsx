@@ -101,7 +101,7 @@ const Chat = ({ theme, recipientId, messages }) => {
               <Message
                 key={message.id}
                 message={message}
-                type={userInfo.id === message.sender_id ? "self" : ""}
+                type={userInfo.id === message.chatMembers[0] ? "self" : ""}
               />
             ))}
           </div>
