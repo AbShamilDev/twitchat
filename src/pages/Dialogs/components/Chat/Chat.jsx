@@ -83,8 +83,8 @@ const Chat = ({ theme, recipientId, messages }) => {
         JSON.stringify({
           type: "send_message",
           message,
-          sender: userInfo.id,
-          recipient: recipientId,
+          sender_id: userInfo.id,
+          recipient_id: recipientId,
         })
       )
     );
