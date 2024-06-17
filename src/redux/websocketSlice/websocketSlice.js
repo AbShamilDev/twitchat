@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setIsConnected, addMessage } from "./websocketActions";
+import { setIsConnected, addSocketMessage } from "./websocketActions";
 
 const websocketSlice = createSlice({
   name: "websocket",
@@ -12,7 +12,7 @@ const websocketSlice = createSlice({
       .addCase(setIsConnected, (state, action) => {
         state.isConnected = action.payload;
       })
-      .addCase(addMessage, (state, action) => {
+      .addCase(addSocketMessage, (state, action) => {
         state.messages.push(action.payload);
       });
   },

@@ -1,15 +1,15 @@
 import React from "react";
 import s from "../../Dialogs.module.css";
 
-const Message = (props) => {
+const Message = ({ index, type, message }) => {
   return (
     <div
-      id={`message-${props.index}`}
-      className={`${s.messageWrapper} ${props.type === "self" ? s.self : ""}`}
+      id={`message-${index}`}
+      className={`${s.messageWrapper} ${type === "self" ? s.self : ""}`}
     >
       <p className={s.message}>
-        {props.message}
-        <span className={s.time}>{props.time}</span>
+        {message}
+        <span className={s.time}>{time}</span>
       </p>
     </div>
   );

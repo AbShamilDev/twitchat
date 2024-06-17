@@ -39,10 +39,10 @@ const debounce = (fn, ms) => {
   };
 };
 
-const Chat = ({ theme, reciverId, messages }) => {
+const Chat = ({ theme, recipientId, messages }) => {
   const dispatch = useDispatch();
   const { userInfo, usersList } = useSelector((state) => state.dataSlice);
-  const receiverUser = usersList.find((user) => user.id === reciverId);
+  const receiverUser = usersList.find((user) => user.id === recipientId);
 
   const CleanDateSpans = (element) => {
     if (!element) return;
@@ -84,13 +84,13 @@ const Chat = ({ theme, reciverId, messages }) => {
           type: "send_message",
           message,
           sender: userInfo.id,
-          recipient: reciverId,
+          recipient: recipientId,
         })
       )
     );
   };
 
-  return reciverId ? (
+  return recipientId ? (
     <div className={s.chat}>
       <MessagesHeader
         cancelChat={() => dispatch(setActiveDialogId(null))}
@@ -110,7 +110,7 @@ const Chat = ({ theme, reciverId, messages }) => {
       <MessageInput
         theme={theme}
         sendMessage={(message) => sendMessage(message)}
-        reciverId={reciverId}
+        recipientId={recipientId}
       />
     </div>
   ) : null;

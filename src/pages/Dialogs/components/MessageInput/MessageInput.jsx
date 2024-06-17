@@ -3,7 +3,7 @@ import SendIcon from "../../svg/SendIcon";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const MessageInput = ({ theme, sendMessage, reciverId }) => {
+const MessageInput = ({ theme, sendMessage, recipientId }) => {
   const [message, setMessage] = useState("");
 
   return (

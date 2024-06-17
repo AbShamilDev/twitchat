@@ -26,6 +26,9 @@ export const setIsConnected = createAction(
   })
 );
 
-export const addMessage = createAction("websocket/addMessage", (message) => ({
-  payload: message,
-}));
+export const addSocketMessage = createAction(
+  "websocket/addSocketMessage",
+  (message) => ({
+    payload: message,
+  })
+);

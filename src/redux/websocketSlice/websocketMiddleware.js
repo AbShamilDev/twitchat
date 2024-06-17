@@ -1,4 +1,5 @@
-import { setIsConnected, addMessage } from "./websocketActions";
+import { addMessage } from "../dataSlice/dataSlice";
+import { setIsConnected, addSocketMessage } from "./websocketActions";
 
 const websocketMiddleware = (store) => {
   let socket = null;
@@ -23,8 +24,8 @@ const websocketMiddleware = (store) => {
         };
 
         socket.onmessage = (event) => {
-          store.dispatch(addMessage(event.data));
-          //   store.dispatch(setMessages({userU}))
+          store.dispatch(addSocketMessage(event.data));
+          store.dispatch(addMessage({}));
         };
 
         break;
