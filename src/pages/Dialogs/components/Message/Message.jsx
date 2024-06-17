@@ -3,10 +3,7 @@ import s from "../../Dialogs.module.css";
 
 const Message = ({ message, type }) => {
   return (
-    <div
-      id={`message-${message.id}`}
-      className={`${s.messageWrapper} ${type === "self" ? s.self : ""}`}
-    >
+    <div id={`message-${message.id}`} className={`${s.messageWrapper} ${type}`}>
       <p className={s.message}>
         {message.message}
         <span className={s.time}>{message.date}</span>

@@ -25,7 +25,14 @@ const websocketMiddleware = (store) => {
 
         socket.onmessage = (event) => {
           store.dispatch(addSocketMessage(event.data));
-          store.dispatch(addMessage({}));
+          switch (event.data.type) {
+            case "get_message":
+              store.dispatch(addMessage(event.data.message));
+              break;
+
+            default:
+              break;
+          }
         };
 
         break;
