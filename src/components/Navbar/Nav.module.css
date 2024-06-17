@@ -133,4 +133,9 @@
   .item:hover * {
     stroke: #5fa0c2;
   }
+
+  .active * {
+    fill: #3dafec !important;
+    stroke: #3dafec !important;
+  }
 }

@@ -245,7 +245,8 @@
 @media (max-width: 800px) {
   .dialogs {
     padding: 0;
-    height: 100vh;
+    min-height: 100%;
+    overflow: auto;
   }
 
   .users {

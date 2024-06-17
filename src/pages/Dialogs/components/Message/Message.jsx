@@ -2,7 +2,6 @@ import React from "react";
 import s from "../../Dialogs.module.css";
 
 const Message = ({ message, type }) => {
-  console.log(message);
   return (
     <div
       id={`message-${message.id}`}

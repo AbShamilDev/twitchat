@@ -18,7 +18,7 @@ const MessageInput = ({ theme, sendMessage }) => {
         placeholder="Начните писать..."
         onKeyUp={(el) => {
           if (el.key === "Enter") {
-            sendMessage(message, inputRef);
+            sendMessage(message);
             setMessage("");
             inputRef.current.focus();
           }
@@ -31,6 +31,7 @@ const MessageInput = ({ theme, sendMessage }) => {
         onClick={() => {
           sendMessage(message);
           setMessage("");
+          inputRef.current.focus();
         }}
         className={s.sendButton}
       >

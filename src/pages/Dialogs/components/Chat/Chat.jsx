@@ -5,7 +5,7 @@ import Message from "../Message/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveDialogId } from "../../../../redux/dialogSlice/dialogSlice";
 import { sendWebSocketMessage } from "../../../../redux/websocketSlice/websocketActions";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 let oldMessageId;
 let loaded = false;
@@ -60,6 +60,7 @@ const Chat = ({ theme, recipientId, messages }) => {
   }, 1000);
 
   const onScrollChat = (event) => {
+    event.stopPropagation();
     const messages = document.getElementsByClassName(s.messages)[0].children;
     const offset = messages[0].offsetTop;
     let visElement;
@@ -74,7 +75,7 @@ const Chat = ({ theme, recipientId, messages }) => {
     hideDate(visElement);
   };
 
-  const sendMessage = (message, inputRef) => {
+  const sendMessage = (message) => {
     dispatch(
       sendWebSocketMessage(
         JSON.stringify({
@@ -87,9 +88,14 @@ const Chat = ({ theme, recipientId, messages }) => {
         })
       )
     );
-    // inputRef.current.value = "";
-    // inputRef.current.forus();
   };
+  useEffect(() => {
+    if (chatWrapperRef.current)
+      // if ()
+      chatWrapperRef.current.scrollTop =
+        chatWrapperRef.current.scrollHeight -
+        chatWrapperRef.current.offsetHeight;
+  });
 
   return recipientId ? (
     <div className={s.chat}>
@@ -100,6 +106,10 @@ const Chat = ({ theme, recipientId, messages }) => {
       <div
         className={s.messagesWrapper}
         ref={chatWrapperRef}
+        onTouchMove={(ev) => {
+          ev.stopPropagation();
+          console.log(chatWrapperRef.current.scrollTop);
+        }}
         onScroll={onScrollChat}
       >
         {messages.length ? (
