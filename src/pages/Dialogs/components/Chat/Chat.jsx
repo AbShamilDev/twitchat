@@ -39,13 +39,10 @@ const debounce = (fn, ms) => {
   };
 };
 
-const Chat = ({ theme }) => {
+const Chat = ({ theme, reciverId, messages }) => {
   const dispatch = useDispatch();
   const { userInfo, usersList } = useSelector((state) => state.dataSlice);
-  const { activeDialogId, messages } = useSelector(
-    (state) => state.dialogSlice
-  );
-  const receiverUser = usersList.find((user) => user.id === activeDialogId);
+  const receiverUser = usersList.find((user) => user.id === reciverId);
 
   const CleanDateSpans = (element) => {
     if (!element) return;
@@ -84,16 +81,16 @@ const Chat = ({ theme }) => {
     dispatch(
       sendWebSocketMessage(
         JSON.stringify({
-          type: "message",
+          type: "send_message",
           message,
           sender: userInfo.id,
-          reciver: activeDialogId,
+          recipient: reciverId,
         })
       )
     );
   };
 
-  return activeDialogId ? (
+  return reciverId ? (
     <div className={s.chat}>
       <MessagesHeader
         cancelChat={() => dispatch(setActiveDialogId(null))}
@@ -113,7 +110,7 @@ const Chat = ({ theme }) => {
       <MessageInput
         theme={theme}
         sendMessage={(message) => sendMessage(message)}
-        activeDialogId={activeDialogId}
+        reciverId={reciverId}
       />
     </div>
   ) : null;

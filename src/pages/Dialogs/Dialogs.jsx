@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveDialogId } from "../../redux/dialogSlice/dialogSlice";
 
 const Dialogs = ({ theme }) => {
-  const usersList = useSelector((state) => state.dataSlice.usersList);
+  const { usersList, messages, userInfo } = useSelector(
+    (state) => state.dataSlice
+  );
   const activeDialogId = useSelector(
     (state) => state.dialogSlice.activeDialogId
   );
@@ -32,7 +34,15 @@ const Dialogs = ({ theme }) => {
           />
         ))}
       </div>
-      <Chat theme={theme} />
+      <Chat
+        theme={theme}
+        to={activeDialogId}
+        messages={messages.filter(
+          (message) =>
+            message.sender_id === userInfo.id &&
+            message.reciver_id === activeDialogId
+        )}
+      />
     </div>
   );
 };
