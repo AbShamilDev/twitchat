@@ -1,15 +1,10 @@
 import MessagesHeader from "../MessagesHeader/MessagesHeader";
 import s from "../../Dialogs.module.css";
 import MessageInput from "../MessageInput/MessageInput";
-import { useEffect, useState } from "react";
 import Message from "../Message/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveDialogId } from "../../../../redux/dialogSlice/dialogSlice";
-import {
-  connectWebSocket,
-  disconnectWebSocket,
-  sendWebSocketMessage,
-} from "../../../../redux/websocketSlice/websocketActions";
+import { sendWebSocketMessage } from "../../../../redux/websocketSlice/websocketActions";
 
 let oldMessageId;
 let loaded = false;

@@ -39,7 +39,9 @@ const Dialogs = ({ theme }) => {
         recipientId={activeDialogId}
         messages={messages.filter(
           (message) =>
-            message.sender_id === userInfo.id &&
+            message.sender_id === userInfo.id ||
+            (message.recipient_id === userInfo.id &&
+              message.sender_id === activeDialogId) ||
             message.recipient_id === activeDialogId
         )}
       />
