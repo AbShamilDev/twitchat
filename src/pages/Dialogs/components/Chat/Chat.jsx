@@ -85,6 +85,7 @@ const Chat = ({ theme, recipientId, messages }) => {
           message,
           sender_id: userInfo.id,
           recipient_id: recipientId,
+          date: new Date().getTime(),
         })
       )
     );
