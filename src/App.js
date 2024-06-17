@@ -38,14 +38,16 @@ function App() {
 
     await axios({
       method: "get",
-      url: `https://b17d444024b5fb33.mokky.dev/messages?sender_id=${selfId}`,
+      url: `https://b17d444024b5fb33.mokky.dev/messages?chatMembers.id=${selfId}`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-    }).then((res) => {
-      console.log(res);
-      dispatch(setMessages(res.data));
-    });
+    })
+      .then((res) => {
+        console.log(res);
+        dispatch(setMessages(res.data));
+      })
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {

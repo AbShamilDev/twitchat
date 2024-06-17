@@ -5,6 +5,7 @@ import Message from "../Message/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveDialogId } from "../../../../redux/dialogSlice/dialogSlice";
 import { sendWebSocketMessage } from "../../../../redux/websocketSlice/websocketActions";
+import { useRef } from "react";
 
 let oldMessageId;
 let loaded = false;
@@ -38,6 +39,7 @@ const Chat = ({ theme, recipientId, messages }) => {
   const dispatch = useDispatch();
   const { userInfo, usersList } = useSelector((state) => state.dataSlice);
   const receiverUser = usersList.find((user) => user.id === recipientId);
+  const chatWrapperRef = useRef(null);
 
   const CleanDateSpans = (element) => {
     if (!element) return;
@@ -85,7 +87,8 @@ const Chat = ({ theme, recipientId, messages }) => {
         })
       )
     );
-    inputRef.current.forus();
+    // inputRef.current.value = "";
+    // inputRef.current.forus();
   };
 
   return recipientId ? (
@@ -94,14 +97,18 @@ const Chat = ({ theme, recipientId, messages }) => {
         cancelChat={() => dispatch(setActiveDialogId(null))}
         name={receiverUser.fullName}
       />
-      <div className={s.messagesWrapper} onScroll={onScrollChat}>
+      <div
+        className={s.messagesWrapper}
+        ref={chatWrapperRef}
+        onScroll={onScrollChat}
+      >
         {messages.length ? (
           <div className={s.messages}>
             {messages.map((message) => (
               <Message
                 key={message.id}
                 message={message}
-                type={userInfo.id === message.chatMembers[0] ? "self" : ""}
+                type={userInfo.id === message.chatMembers[0].id ? "self" : ""}
               />
             ))}
           </div>

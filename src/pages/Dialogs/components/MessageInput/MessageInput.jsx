@@ -20,6 +20,7 @@ const MessageInput = ({ theme, sendMessage }) => {
           if (el.key === "Enter") {
             sendMessage(message, inputRef);
             setMessage("");
+            inputRef.current.focus();
           }
         }}
         type="text"
