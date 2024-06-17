@@ -5,8 +5,11 @@ import Auth from "./pages/Auth/Auth";
 import UserInterface from "./pages/UserInterface/UserInterface";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setUserInfo, setUsersList } from "./redux/dataSlice/dataSlice";
-import { setMessages } from "./redux/dialogSlice/dialogSlice";
+import {
+  setMessages,
+  setUserInfo,
+  setUsersList,
+} from "./redux/dataSlice/dataSlice";
 import { setTheme } from "./redux/themeSlice/themeSlice";
 import { useSelector } from "react-redux";
 import {
@@ -35,13 +38,13 @@ function App() {
 
     await axios({
       method: "get",
-      url: `https://b17d444024b5fb33.mokky.dev/messages?chatMembers.id=${selfId}`,
+      url: `https://b17d444024b5fb33.mokky.dev/messages?sender_id=${selfId}`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     }).then((res) => {
-      const result = res.data;
-      dispatch(setMessages(result));
+      console.log(res);
+      dispatch(setMessages(res.data));
     });
   };
 

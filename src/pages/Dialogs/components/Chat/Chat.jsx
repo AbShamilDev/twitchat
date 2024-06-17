@@ -82,6 +82,7 @@ const Chat = ({ theme, recipientId, messages }) => {
       sendWebSocketMessage(
         JSON.stringify({
           type: "send_message",
+          token: localStorage.getItem("token"),
           message,
           sender_id: userInfo.id,
           recipient_id: recipientId,
@@ -100,8 +101,9 @@ const Chat = ({ theme, recipientId, messages }) => {
       <div className={s.messagesWrapper} onScroll={onScrollChat}>
         {messages.length ? (
           <div className={s.messages}>
-            {[messages].map((message) => (
+            {messages.map((message) => (
               <Message
+                key={message.id}
                 message={message}
                 type={userInfo.id === message.sender_id ? "self" : ""}
               />
