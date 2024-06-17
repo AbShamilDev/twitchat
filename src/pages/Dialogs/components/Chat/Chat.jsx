@@ -99,9 +99,9 @@ const Chat = ({ theme, recipientId, messages }) => {
       <div className={s.messagesWrapper} onScroll={onScrollChat}>
         {messages.length ? (
           <div className={s.messages}>
-            {messages.map((message) => (
+            {/* {[messages].map((message) => (
               <Message />
-            ))}
+            ))} */}
           </div>
         ) : (
           <h1>Нет сообщений</h1>

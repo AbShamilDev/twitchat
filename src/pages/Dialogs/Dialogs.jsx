@@ -36,7 +36,7 @@ const Dialogs = ({ theme }) => {
       </div>
       <Chat
         theme={theme}
-        to={activeDialogId}
+        recipientId={activeDialogId}
         messages={messages.filter(
           (message) =>
             message.sender_id === userInfo.id &&
