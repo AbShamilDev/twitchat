@@ -241,3 +241,14 @@
     opacity: 100%;
   }
 }
+
+@media (max-width: 800px) {
+  .dialogs {
+    padding: 0;
+    height: 100vh;
+  }
+
+  .users {
+    padding: 20px;
+  }
+}

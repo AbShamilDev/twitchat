@@ -7,6 +7,17 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: #0f151c;
+  color: white;
+}
+
+.light {
+  background: white;
+  color: #0f151c;
+}
+
+.light input {
+  border: 1px solid black;
 }
 
 .title {

@@ -9,14 +9,14 @@ const ThemeToggle = () => {
   document.body.classList.toggle("dark", currentTheme === "dark");
 
   useEffect(() => {
-    localStorage.setItem("theme", currentTheme);
+    currentTheme && localStorage.setItem("theme", currentTheme);
   }, [currentTheme]);
 
   return (
     <div
-      onClick={() => {
-        dispatch(setTheme(currentTheme === "dark" ? "light" : "dark"));
-      }}
+      onClick={() =>
+        dispatch(setTheme(currentTheme === "dark" ? "light" : "dark"))
+      }
       className={`toggleWrapper ${currentTheme === "dark" ? null : "light"}`}
     >
       <div className="toggleContainer">

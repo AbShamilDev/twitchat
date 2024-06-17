@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import s from "./Auth.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../../redux/dataSlice/dataSlice";
 
 const Auth = () => {
@@ -10,6 +10,7 @@ const Auth = () => {
   const formRef = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.themeSlice.theme);
 
   useEffect(() => {
     formRef.current.reset();
@@ -80,7 +81,9 @@ const Auth = () => {
   };
 
   return (
-    <div className={`${s.container} ${s.flexCol}`}>
+    <div
+      className={`${s.container} ${s.flexCol} ${theme === "light" && s.light}`}
+    >
       <div className={`${s.formWrapper} ${s.flexCol}`}>
         <h1 className={s.title}>{isLogin ? "Вход" : "Регистрация"}</h1>
         <form

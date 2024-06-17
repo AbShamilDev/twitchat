@@ -40,17 +40,12 @@ const debounce = (fn, ms) => {
 };
 
 const Chat = ({ theme }) => {
+  const dispatch = useDispatch();
+  const { userInfo, usersList } = useSelector((state) => state.dataSlice);
   const { activeDialogId, messages } = useSelector(
     (state) => state.dialogSlice
   );
-
-  const receiverUser = useSelector((state) => state.dataSlice.usersList).find(
-    (user) => user.id === activeDialogId
-  );
-
-  const selfId = useSelector((state) => state.dataSlice.userInfo.id);
-
-  const dispatch = useDispatch();
+  const receiverUser = usersList.find((user) => user.id === activeDialogId);
 
   const CleanDateSpans = (element) => {
     if (!element) return;
@@ -85,25 +80,13 @@ const Chat = ({ theme }) => {
     hideDate(visElement);
   };
 
-  useEffect(() => {
-    if (selfId) {
-      dispatch(
-        connectWebSocket("wss://twitchatbackend.up.railway.app/", selfId)
-      );
-
-      return () => {
-        dispatch(disconnectWebSocket());
-      };
-    }
-  }, [selfId]);
-
   const sendMessage = (message) => {
     dispatch(
       sendWebSocketMessage(
         JSON.stringify({
           type: "message",
           message,
-          sender: selfId,
+          sender: userInfo.id,
           reciver: activeDialogId,
         })
       )

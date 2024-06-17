@@ -19,14 +19,15 @@
 
 .nav.light .item {
   color: black;
+  fill: black;
 }
 
 .item {
   color: white;
   font-size: 20px;
   text-decoration: none;
-  transition: ease 200ms;
   min-width: 30px;
+  /* transition: ease 200ms; */
 }
 
 .item:hover {
@@ -129,7 +130,7 @@
     display: block;
   }
 
-  .item:hover path {
+  .item:hover * {
     stroke: #5fa0c2;
   }
 }

@@ -14,7 +14,7 @@ const UserInterface = () => {
 
   return (
     <div
-      className={`appWrapper ${currentTheme === "dark" ? null : "light"} ${
+      className={`appWrapper ${currentTheme === "dark" ? "dark" : "light"} ${
         activeDialog && "chat"
       }`}
     >

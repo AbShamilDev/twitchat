@@ -1,10 +1,12 @@
 .inputWrapper {
   display: flex;
-  width: calc(100% - 20px);
+  width: 100%;
   align-items: center;
+  height: 60px;
   padding: 10px;
   background: #1d2d3b;
 }
+
 .inputWrapper.light {
   background: #7d9cab;
   color: #213845;
@@ -30,6 +32,7 @@
   color: white;
   caret-color: white;
 }
+
 .light input::-webkit-input-placeholder {
   color: white;
 }

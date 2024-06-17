@@ -7,11 +7,18 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUserInfo, setUsersList } from "./redux/dataSlice/dataSlice";
 import { setMessages } from "./redux/dialogSlice/dialogSlice";
+import { setTheme } from "./redux/themeSlice/themeSlice";
+import { useSelector } from "react-redux";
+import {
+  connectWebSocket,
+  disconnectWebSocket,
+} from "./redux/websocketSlice/websocketActions";
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const path = useResolvedPath();
+  const userInfo = useSelector((state) => state.dataSlice.userInfo);
 
   const fetchData = async (selfId) => {
     await axios({
@@ -38,9 +45,8 @@ function App() {
     });
   };
 
-
-
   useEffect(() => {
+    // проверка авторизации
     if (!localStorage.getItem("token")) {
       navigate("/auth");
     } else {
@@ -57,18 +63,44 @@ function App() {
           path.pathname === "/" && navigate("/main");
           console.log(path);
         })
-        .catch((err) => console.error(err));
+        .catch(() => {
+          localStorage.removeItem("token");
+          navigate("/auth");
+        });
     }
+
+    // установка сохраненной темы
+    if (localStorage.getItem("theme")) {
+      console.log(localStorage.getItem("theme"));
+      dispatch(setTheme(localStorage.getItem("theme")));
+    } else {
+      dispatch(setTheme("dark"));
+    }
+    console.log("root");
+
+    // блокировка вертикального скролла приложения
     const handleTouchMove = (event) => {
       event.preventDefault();
     };
 
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
-      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener("touchmove", handleTouchMove);
     };
   }, []);
+
+  useEffect(() => {
+    if (userInfo.id) {
+      dispatch(
+        connectWebSocket("wss://twitchatbackend.up.railway.app/", userInfo.id)
+      );
+
+      return () => {
+        dispatch(disconnectWebSocket());
+      };
+    }
+  }, [userInfo]);
 
   return (
     <Routes>

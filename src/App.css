@@ -28,8 +28,8 @@ body.dark {
 }
 
 * {
-  -webkit-transition: background-image 1s ease-in-out;
-  transition: background-image 1s ease-in-out;
+  /* -webkit-transition: background-image 1s ease-in-out;
+  transition: background-image 1s ease-in-out; */
 }
 
 .content {
@@ -48,5 +48,6 @@ body.dark {
   }
   .appWrapper.chat {
     grid-template-areas: "c";
+    grid-template-rows: 1fr;
   }
 }
